@@ -1,0 +1,21 @@
+function [Data] = LoadSourceDetectorData(DataString, RhoIndex, Indices, UseIRF)
+
+    AriaDataStruct = load(DataString);
+    AriaData = AriaDataStruct.RadialFluxDataOverAllWavelengths;
+
+    if ndims(AriaData)
+    Data1 = squeeze(AriaData(RhoIndex, :, :, Indices(1), Indices(2)))';
+
+
+    if UseIRF
+        IRF = zeros(size(squeeze(AriaData(1,:,:,1,1))))';
+        IRF(:,1:15) = 1000;
+    else
+        IRF = squeeze(zeros(size(AriaData(1, :, :, 1, 1))))';
+    end
+
+
+    
+
+
+end
